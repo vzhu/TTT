@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TicTacToe.Models
 {
-    public enum Player
+    public enum Owners
     {
         None = 0,
         One,
@@ -16,23 +16,26 @@ namespace TicTacToe.Models
     {
         private int MAX_SIZE = 3;
 
-        public Player[,] Grid { get; set; }
-        public Board()
+        public string Player1 { get; private set; }
+        public string Player2 { get; private set; }
+        public string Channel { get; private set; }
+
+        public Owners[,] Grid { get; set; }
+        public Board(string player1, string player2, string channel)
         {
-            Grid = new Player[MAX_SIZE, MAX_SIZE];
+            Grid = new Owners[MAX_SIZE, MAX_SIZE];
             
             for (int i = 0; i < MAX_SIZE; i++)
             {
                 for (int j = 0; j < MAX_SIZE; j++)
                 {
-                    Grid[i,j] = Player.None;
+                    Grid[i,j] = Owners.None;
                 }
             }
-        }
 
-        public Board CreateNewBoard()
-        {
-            return new Board();
+            Player1 = player1;
+            Player2 = player2;
+            Channel = channel;
         }
     }
 }
