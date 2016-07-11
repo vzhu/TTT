@@ -12,7 +12,12 @@ namespace TicTacToe.Controllers
 {
     public class TTTController : ApiController
     {
-        BoardTable model = BoardTable.Instance;
+        private readonly string CreateToken = "mO256MrttY6MABLj4ZRmKNMQ";
+        private readonly string GetToken = "AT4yczKT9VkWaWWyYF5OcIOv";
+        private readonly string UpdateToken = "VueU1JC3aKl4Awyl7PmvwjRr";
+        private readonly string DeleteToken = "UX9mD35pkvr8UNpJNimoOcci";
+
+        private BoardTable model = BoardTable.Instance;
 
         public TTTController()
         {
@@ -22,6 +27,12 @@ namespace TicTacToe.Controllers
         [Route("api/ttt/create")]
         public IHttpActionResult CreateBoard([FromBody]JObject data)
         {
+            string token = data["token"].ToObject<string>();
+            if (string.Compare(token, this.CreateToken) != 0)
+            {
+                return BadRequest("Could not create board, mismatched token");
+            }
+
             string player1 = data["user_name"].ToObject<string>();
             string player2 = data["text"].ToObject<string>();
             string channel = data["channel_id"].ToObject<string>();
@@ -43,6 +54,12 @@ namespace TicTacToe.Controllers
         [Route("api/ttt/delete")]
         public IHttpActionResult DeleteBoard([FromBody]JObject data)
         {
+            string token = data["token"].ToObject<string>();
+            if (string.Compare(token, this.DeleteToken) != 0)
+            {
+                return BadRequest("Could not delete board, mismatched token");
+            }
+
             string channel = data["channel_id"].ToObject<string>();
             string player1 = data["user_name"].ToObject<string>();
             string player2 = data["text"].ToObject<string>();
@@ -59,6 +76,12 @@ namespace TicTacToe.Controllers
         [Route("api/ttt/get")]
         public IHttpActionResult GetBoard([FromBody]JObject data)
         {
+            string token = data["token"].ToObject<string>();
+            if (string.Compare(token, this.GetToken) != 0)
+            {
+                return BadRequest("Could not get board, mismatched token");
+            }
+
             string channel = data["channel_id"].ToObject<string>();
 
             Board result = this.model.GetBoard(channel);
@@ -75,6 +98,12 @@ namespace TicTacToe.Controllers
         [Route("api/ttt/update")]
         public IHttpActionResult UpdateBoard([FromBody]JObject data)
         {
+            string token = data["token"].ToObject<string>();
+            if (string.Compare(token, this.UpdateToken) != 0)
+            {
+                return BadRequest("Could not update board, mismatched token");
+            }
+
             string player = data["user_name"].ToObject<string>();
             string channel = data["channel_id"].ToObject<string>();
             int position = data["text"].ToObject<int>();
