@@ -32,14 +32,22 @@ namespace TicTacToe.Models
             }
         }
 
-        public bool PreCreateBoardValidation(string channel)
+        public bool PreCreateBoardValidation(string player1, string player2, string channel)
         {
-            if (this.channelToBoardDb.Keys.Contains(channel))
+            Board board;
+            this.channelToBoardDb.TryGetValue(channel, out board);
+
+            if (board == null)
+                return true;
+
+            // if someone has won, a new game can be created
+            if (board.Winner != Owners.None)
             {
-                return false;
+                DeleteBoard(player1, player2, channel);
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         public bool CreateBoard(string player1, string player2, string channel)
@@ -86,6 +94,30 @@ namespace TicTacToe.Models
             }
 
             return true;
+        }
+
+        public Board UpdateBoard(string player, int pos, string channel)
+        {
+            string player1Key = CreateKey(player, channel);
+            if (!this.userToBoardDb.ContainsKey(player1Key))
+            {
+                return null;
+            }
+
+            Board board;
+            this.channelToBoardDb.TryGetValue(channel, out board);
+
+            if (board == null)
+            {
+                return null;
+            }
+
+            if (!board.updateBoard(player, pos))
+            {
+                return null;
+            }
+
+            return board;
         }
 
         public Board GetBoard(string channel)

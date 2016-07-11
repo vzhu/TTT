@@ -22,14 +22,14 @@ namespace TicTacToe.Controllers
         [Route("api/ttt/create")]
         public IHttpActionResult CreateBoard([FromBody]JObject data)
         {
+            string player1 = data["user_name"].ToObject<string>();
+            string player2 = data["text"].ToObject<string>();
             string channel = data["channel_id"].ToObject<string>();
-            if(!this.model.PreCreateBoardValidation(channel))
+
+            if(!this.model.PreCreateBoardValidation(player1, player2, channel))
             {
                 return BadRequest("Could not create board, there is already a session in place");
             }
-
-            string player1 = data["user_name"].ToObject<string>();
-            string player2 = data["text"].ToObject<string>();
 
             if (!this.model.CreateBoard(player1, player2, channel))
             {
@@ -67,23 +67,35 @@ namespace TicTacToe.Controllers
                 return BadRequest("Could not delete board, invalid user input");
             }
 
-            return Ok(result);
+            JObject response = FormatBoard(result);
+            return Ok(response);
         }
 
-        //[HttpPost]
-        //[Route("api/ttt/update")]
-        //public IHttpActionResult UpdateBoard([FromBody]JObject data)
-        //{
-        //    string player1 = data["user_name"].ToObject<string>();
-        //    string position = data["text"].ToObject<string>();
+        [HttpPost]
+        [Route("api/ttt/update")]
+        public IHttpActionResult UpdateBoard([FromBody]JObject data)
+        {
+            string player = data["user_name"].ToObject<string>();
+            string channel = data["channel_id"].ToObject<string>();
+            int position = data["text"].ToObject<int>();
 
-        //    Board result = this.model.UpdateBoard(player1, position);
-        //    if (result == null)
-        //    {
-        //        return BadRequest("Could not delete board, invalid user input");
-        //    }
+            Board result = this.model.UpdateBoard(player, position, channel);
+            if (result == null)
+            {
+                return BadRequest("Could not delete board, invalid user input");
+            }
 
-        //    return Ok(result);
-        //}
+            JObject response = FormatBoard(result);
+            return Ok(response);
+        }
+
+        private JObject FormatBoard(Board result)
+        {
+            JObject response = new JObject();
+            response["response_type"] = "in_channel";
+            response["text"] = result.Prettify();
+
+            return response;
+        }
     }
 }

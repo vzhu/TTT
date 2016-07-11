@@ -21,14 +21,32 @@
                 <input type="text" name="text" />
             </p>
             <p>
-                <label for="user2">channel_id:</label>
+                <label for="channel">channel_id:</label>
                 <input type="text" name="channel_id" />
             </p>
             <input type="button" id="save" value="Save" onclick="createBoard();"/>
         </form>
 
+        <form id="updateForm" method="post">
+            <h3>Updates a Board</h3>
+            <p>
+                <label for="user1">User1:</label>
+                <input type="text" name="user_name" />
+            </p>
+            <p>
+                <label for="pos">pos:</label>
+                <input type="text" name="text" />
+            </p>
+            <p>
+                <label for="channel">channel_id:</label>
+                <input type="text" name="channel_id" />
+            </p>
+            <input type="button" id="update" value="Update" onclick="updateBoard();" />
+        </form>
+
+
         <form id="deleteForm" method="post">
-            <h3>Delete a old Board</h3>
+            <h3>Delete a Board</h3>
             <p>
                 <label for="user1">User1:</label>
                 <input type="text" name="user_name" />
@@ -38,7 +56,7 @@
                 <input type="text" name="text" />
             </p>
             <p>
-                <label for="user2">channel_id:</label>
+                <label for="channel">channel_id:</label>
                 <input type="text" name="channel_id" />
             </p>
             <input type="button" id="delete" value="Delete" onclick="deleteBoard();" />
@@ -47,7 +65,7 @@
         <form id="getForm" method="post">
             <h3>Get a Board</h3>
             <p>
-                <label for="user2">channel_id:</label>
+                <label for="channel">channel_id:</label>
                 <input type="text" name="channel_id" />
             </p>
             <input type="button" id="get" value="Get" onclick="getBoard();" />
@@ -71,8 +89,6 @@
     });
 
     function createBoard() {
-        var user1 = $('#user1').val();
-        var user2 = $('#user2').val();
         $.post(uri + '/create/', $("#saveForm").serialize())
           .done(function (data) {
               $('<li>', { text: 'Create Success' }).appendTo($('#grid'));
@@ -82,9 +98,20 @@
           });
     }
 
+    function updateBoard() {
+        $.post(uri + '/update/', $("#updateForm").serialize())
+          .done(function (data) {
+              $('<li>', { text: 'Update Success' }).appendTo($('#grid'));
+              $.each(data, function (key, item) {
+                  $('<li>', { text: key + ': ' + item }).appendTo($('#grid'));
+              });
+          })
+          .fail(function (jqXHR, textStatus, err) {
+              $('<li>', { text: 'Error: ' + err }).appendTo($('#grid'));
+          });
+    }
+
     function deleteBoard() {
-        var user1 = $('#user1').val();
-        var user2 = $('#user2').val();
         $.post(uri + '/delete/', $("#deleteForm").serialize())
           .done(function (data) {
               $('<li>', { text: 'Delete Success' }).appendTo($('#grid'));
@@ -95,19 +122,18 @@
     }
 
     function getBoard() {
-        var user1 = $('#user1').val();
-        var user2 = $('#user2').val();
         $.post(uri + '/get/', $("#getForm").serialize())
           .done(function (data) {
               $('<li>', { text: 'Get Success' }).appendTo($('#grid'));
               $.each(data, function (key, item) {
-                  $('<li>', { text: item }).appendTo($('#grid'));
+                  $('<li>', { text: key + ': ' + item }).appendTo($('#grid'));
               });
           })
           .fail(function (jqXHR, textStatus, err) {
               $('<li>', { text: 'Error: ' + err }).appendTo($('#grid'));
           });
     }
+
     </script>
 </body>
 </html>
