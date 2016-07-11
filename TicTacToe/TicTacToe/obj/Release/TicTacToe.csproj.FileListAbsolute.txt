@@ -39,3 +39,44 @@ C:\Users\victo\Documents\Visual Studio 2015\Projects\TicTacToe\TicTacToe\bin\Sys
 C:\Users\victo\Documents\Visual Studio 2015\Projects\TicTacToe\TicTacToe\obj\Release\TicTacToe.csprojResolveAssemblyReference.cache
 C:\Users\victo\Documents\Visual Studio 2015\Projects\TicTacToe\TicTacToe\obj\Release\TicTacToe.dll
 C:\Users\victo\Documents\Visual Studio 2015\Projects\TicTacToe\TicTacToe\obj\Release\TicTacToe.pdb
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\ApplicationInsights.config
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\roslyn\csc.exe
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\roslyn\vbc.exe
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\roslyn\VBCSCompiler.exe
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\TicTacToe.dll.config
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\TicTacToe.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\TicTacToe.pdb
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.AI.Web.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.ApplicationInsights.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Newtonsoft.Json.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\System.Net.Http.Formatting.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\System.Web.Http.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\System.Web.Http.WebHost.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.AI.Web.xml
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.ApplicationInsights.xml
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\Newtonsoft.Json.xml
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\System.Net.Http.Formatting.xml
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\System.Web.Http.xml
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\bin\System.Web.Http.WebHost.xml
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\obj\Release\TicTacToe.csprojResolveAssemblyReference.cache
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\obj\Release\TicTacToe.dll
+C:\Users\victo\Documents\GitHub\TTT\TicTacToe\TicTacToe\obj\Release\TicTacToe.pdb

@@ -6,14 +6,72 @@
 <body>
 
     <div>
-        <h2>All Products</h2>
-        <ul id="products" />
+        <h2>All Boards</h2>
+        <ul id="boards" />
     </div>
     <div>
-        <h2>Search by ID</h2>
-        <input type="text" id="prodId" size="5" />
-        <input type="button" value="Search" onclick="find();" />
-        <p id="product" />
+        <form id="saveForm" method="post">
+            <h3>Create a new Board</h3>
+            <p>
+                <label for="user1">User1:</label>
+                <input type="text" name="user_name" />
+            </p>
+            <p>
+                <label for="user2">User2:</label>
+                <input type="text" name="text" />
+            </p>
+            <p>
+                <label for="channel">channel_id:</label>
+                <input type="text" name="channel_id" />
+            </p>
+            <input type="button" id="save" value="Save" onclick="createBoard();"/>
+        </form>
+
+        <form id="updateForm" method="post">
+            <h3>Updates a Board</h3>
+            <p>
+                <label for="user1">User1:</label>
+                <input type="text" name="user_name" />
+            </p>
+            <p>
+                <label for="pos">pos:</label>
+                <input type="text" name="text" />
+            </p>
+            <p>
+                <label for="channel">channel_id:</label>
+                <input type="text" name="channel_id" />
+            </p>
+            <input type="button" id="update" value="Update" onclick="updateBoard();" />
+        </form>
+
+
+        <form id="deleteForm" method="post">
+            <h3>Delete a Board</h3>
+            <p>
+                <label for="user1">User1:</label>
+                <input type="text" name="user_name" />
+            </p>
+            <p>
+                <label for="user2">User2:</label>
+                <input type="text" name="text" />
+            </p>
+            <p>
+                <label for="channel">channel_id:</label>
+                <input type="text" name="channel_id" />
+            </p>
+            <input type="button" id="delete" value="Delete" onclick="deleteBoard();" />
+        </form>
+
+        <form id="getForm" method="post">
+            <h3>Get a Board</h3>
+            <p>
+                <label for="channel">channel_id:</label>
+                <input type="text" name="channel_id" />
+            </p>
+            <input type="button" id="get" value="Get" onclick="getBoard();" />
+        </form>
+
+        <p id="grid" />
     </div>
 
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
@@ -24,28 +82,58 @@
       // Send an AJAX request
       $.getJSON(uri)
           .done(function (data) {
-            // On success, 'data' contains a list of products.
             $.each(data, function (key, item) {
-              // Add a list item for the product.
-              $('<li>', { text: formatItem(item) }).appendTo($('#products'));
+                $('<li>', { text: formatItem(item) }).appendTo($('#boards'));
             });
           });
     });
 
-    function formatItem(item) {
-      return item.Name + ': $' + item.Price;
-    }
-
-    function find() {
-      var id = $('#prodId').val();
-      $.getJSON(uri + '/' + id)
+    function createBoard() {
+        $.post(uri + '/create/', $("#saveForm").serialize())
           .done(function (data) {
-            $('#product').text(formatItem(data));
+              $('<li>', { text: 'Create Success' }).appendTo($('#grid'));
           })
           .fail(function (jqXHR, textStatus, err) {
-            $('#product').text('Error: ' + err);
+              $('<li>', { text: 'Error: ' + err }).appendTo($('#grid'));
           });
     }
+
+    function updateBoard() {
+        $.post(uri + '/update/', $("#updateForm").serialize())
+          .done(function (data) {
+              $('<li>', { text: 'Update Success' }).appendTo($('#grid'));
+              $.each(data, function (key, item) {
+                  $('<li>', { text: key + ': ' + item }).appendTo($('#grid'));
+              });
+          })
+          .fail(function (jqXHR, textStatus, err) {
+              $('<li>', { text: 'Error: ' + err }).appendTo($('#grid'));
+          });
+    }
+
+    function deleteBoard() {
+        $.post(uri + '/delete/', $("#deleteForm").serialize())
+          .done(function (data) {
+              $('<li>', { text: 'Delete Success' }).appendTo($('#grid'));
+          })
+          .fail(function (jqXHR, textStatus, err) {
+              $('<li>', { text: 'Error: ' + err }).appendTo($('#grid'));
+          });
+    }
+
+    function getBoard() {
+        $.post(uri + '/get/', $("#getForm").serialize())
+          .done(function (data) {
+              $('<li>', { text: 'Get Success' }).appendTo($('#grid'));
+              $.each(data, function (key, item) {
+                  $('<li>', { text: key + ': ' + item }).appendTo($('#grid'));
+              });
+          })
+          .fail(function (jqXHR, textStatus, err) {
+              $('<li>', { text: 'Error: ' + err }).appendTo($('#grid'));
+          });
+    }
+
     </script>
 </body>
 </html>
