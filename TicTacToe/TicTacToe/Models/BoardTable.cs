@@ -8,7 +8,6 @@ namespace TicTacToe.Models
     public class BoardTable
     {
         private static string delimiter = "__";
-
         private static BoardTable instance;
 
         public Dictionary<string, Board> userToBoardDb { get; private set; }
@@ -64,7 +63,7 @@ namespace TicTacToe.Models
             if (this.userToBoardDb.ContainsKey(player1Key) || this.userToBoardDb.ContainsKey(player2Key))
                 return false;
 
-            // add the key, game
+            // add the key --> game to dbs
             Board board = new Board(player1, player2, channel);
             this.userToBoardDb.Add(player1Key, board);
             this.userToBoardDb.Add(player2Key, board);

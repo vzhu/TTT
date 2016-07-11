@@ -14,7 +14,10 @@ namespace TicTacToe.Models
 
     public class Board
     {
-        private int MAX_SIZE = 3;
+        private readonly string CurrentTurn = "Current Turn: ";
+        private readonly string GameOver = "\nGame is complete.\nWinner is: ";
+
+        public static int MAX_SIZE = 3;
 
         public string Turn { get; private set; }
         public string Player1 { get; private set; }
@@ -167,7 +170,7 @@ namespace TicTacToe.Models
 
         public string Prettify()
         {
-            string result = "Current Turn: " + this.Turn + "\n";
+            string result = this.CurrentTurn + this.Turn + "\n";
             
             for (int y = 0; y < MAX_SIZE; y++)
             {
@@ -177,7 +180,7 @@ namespace TicTacToe.Models
 
                     if (x != MAX_SIZE - 1)
                     {
-                        result += " ";
+                        result += "  ";
                     }
                 }
 
@@ -189,7 +192,7 @@ namespace TicTacToe.Models
 
             if (this.Winner != Owners.None)
             {
-                result += "\nGame is complete.\nWinner is: " + ((this.Winner == Owners.PlayerOne) ? Player1 : Player2);
+                result += this.GameOver + ((this.Winner == Owners.PlayerOne) ? Player1 : Player2);
             }
 
             return result;
